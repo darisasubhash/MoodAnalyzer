@@ -1,7 +1,14 @@
 package com.moodanalyser;
 
 public class MoodAnalyser {
-    public String analyseMood(String string){
+    private String string;
+    public MoodAnalyser(){
+        this.string="";
+    }
+    public MoodAnalyser(String string){
+        this.string=string;
+    }
+    public String analyseMood(){
         if(string.toLowerCase().contains("sad")){
             return "SAD";
         }

@@ -7,15 +7,13 @@ import static org.testng.AssertJUnit.assertEquals;
 public class MoodAnalyserTest {
     @Test
     public void givenMessageReturnsSad(){
-        MoodAnalyser analyse=new MoodAnalyser();
-        String result= analyse.analyseMood("I am in Sad Mood");
-        assertEquals("SAD",result);
+        MoodAnalyser analyse=new MoodAnalyser("I am in Sad Mood");
+        assertEquals("SAD",analyse.analyseMood());
     }
     @Test
     public void givenMessageReturnsHappy(){
-        MoodAnalyser analyser=new MoodAnalyser();
-        String result= analyser.analyseMood("I am in Happy Mood");
-        assertEquals("HAPPY",result);
+        MoodAnalyser analyser=new MoodAnalyser("I am in Happy Mood");
+        assertEquals("HAPPY",analyser.analyseMood());
     }
 
 }
