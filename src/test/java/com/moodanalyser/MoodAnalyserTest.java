@@ -3,21 +3,27 @@ package com.moodanalyser;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.fail;
 
 public class MoodAnalyserTest {
     @Test
-    public void givenMessageReturnsSad(){
+    public void givenMessageReturnsSad() throws MoodAnalysisException {
         MoodAnalyser analyse=new MoodAnalyser("I am in Sad Mood");
         assertEquals("SAD",analyse.analyseMood());
     }
     @Test
-    public void givenMessageReturnsHappy(){
+    public void givenMessageReturnsHappy() throws MoodAnalysisException {
         MoodAnalyser analyser=new MoodAnalyser("I am in Happy Mood");
         assertEquals("HAPPY",analyser.analyseMood());
     }
     @Test
-    public void givenMessageNullReturnsHappy(){
-        MoodAnalyser analyser=new MoodAnalyser(null);
-        assertEquals("HAPPY",analyser.analyseMood());
+    public void givenMessageNullThrowMoodAnalysisException() {
+        try {
+            MoodAnalyser analyser = new MoodAnalyser(null);
+            analyser.analyseMood();
+            fail("Expected MoodAnalysisException for NULL mood");
+        } catch (MoodAnalysisException e) {
+            assertEquals(MoodAnalysisException.ExceptionType.NULL, e.type);
+        }
     }
 }

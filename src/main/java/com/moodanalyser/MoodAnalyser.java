@@ -8,17 +8,18 @@ public class MoodAnalyser {
     public MoodAnalyser(String string){
         this.string=string;
     }
-    public String analyseMood(){
-        try{
-            if(string.toLowerCase().contains("sad")){
+    public String analyseMood() throws MoodAnalysisException {
+        try {
+            if (string.toLowerCase().contains("sad")) {
                 return "SAD";
             }
-            else {
-                return "HAPPY";
-            }
-        }
-        catch (NullPointerException e){
             return "HAPPY";
+
+        } catch (NullPointerException e) {
+            throw new MoodAnalysisException(
+                    MoodAnalysisException.ExceptionType.NULL,
+                    "Mood is NULL"
+            );
         }
     }
 }
