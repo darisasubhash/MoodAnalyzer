@@ -9,10 +9,15 @@ public class MoodAnalyser {
         this.string=string;
     }
     public String analyseMood(){
-        if(string.toLowerCase().contains("sad")){
-            return "SAD";
+        try{
+            if(string.toLowerCase().contains("sad")){
+                return "SAD";
+            }
+            else {
+                return "HAPPY";
+            }
         }
-        else {
+        catch (NullPointerException e){
             return "HAPPY";
         }
     }
